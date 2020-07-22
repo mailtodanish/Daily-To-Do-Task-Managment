@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+django = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-tinymce = "*"
+psycopg2 = "*"
+django-taggit = "*"
+django-cryptography = "*"
+django-taggit-serializer = "*"
+unidecode = "*"
+xhtml2pdf = "*"
+djangorestframework = "*"
+pycodestyle = "*"
+
+[requires]
+python_version = "3.8"
