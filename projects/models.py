@@ -173,8 +173,7 @@ class Activity(models.Model):
         # update column
         self.updated = timezone.now()
         # Add date if activity is updated.
-        self.Description = self.Description + "<br><b>"
-        + timezone.now().strftime('%Y-%m-%d') + "</b>"
+        self.Description = self.Description + "<br><b>" + timezone.now().strftime('%Y-%m-%d') + "</b>"
         super().save(*args, **kwargs)
         if self.status == "Done" and self.parentActivityId != 0:
             # search activity and update rescheduled date

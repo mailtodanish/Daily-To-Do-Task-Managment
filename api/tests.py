@@ -114,12 +114,12 @@ class daily_random_revision_item_Test(APITestCase):
         self.superuser = User.objects.create_superuser('john', 'john@snow.com', 'johnpassword')
         self.token = Token.objects.create(user=self.superuser)
         self.api_authentication()
-        #database is usually recreated from scratch and thus empty
-        TaskComment.objects.create(content="Activity_Title",tags=["Description",])
-        TaskComment.objects.create(content="Activity_Title1",tags=["Description",])
-        TaskComment.objects.create(content="Activity_Title2",tags=["Description",])
-        TaskComment.objects.create(content="Activity_Title3",tags=["Description",])
-        TaskComment.objects.create(content="Activity_Title4",tags=["Description",])
+        # database is usually recreated from scratch and thus empty
+        TaskComment.objects.create(content="Activity_Title", tags=["Description",])
+        TaskComment.objects.create(content="Activity_Title1", tags=["Description",])
+        TaskComment.objects.create(content="Activity_Title2", tags=["Description",])
+        TaskComment.objects.create(content="Activity_Title3", tags=["Description",])
+        TaskComment.objects.create(content="Activity_Title4", tags=["Description",])
     
     def api_authentication(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
