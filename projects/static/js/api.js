@@ -1,3 +1,21 @@
+const loadChildActivity=(pk)=>{
+    // API for child activities history
+    let url = `/api/childactivity/${pk}`;
+     fetch(url)
+      .then(response=>{
+          
+          return response.json();
+      })
+      .then(res=>{
+          $('#right-panel-data').empty(); 
+          $.each(res, function( index, value ) {
+            $('#right-panel-data').append(`<h3>History Child Activities</h3><br><div><h5>${index+1}) Title - ${value.Title}, Status -${value.status}</h5></div>`);
+            });
+         
+      });
+    
+   
+  }
 const loadRevisionItem=()=>{
     let url = '/api/revision/';
      fetch(url)

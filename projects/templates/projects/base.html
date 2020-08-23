@@ -15,7 +15,7 @@
 
 
     <!-- Bootstrap core CSS -->
-<link href="{% static "/bootsrap/css/bootstrap.css" %}" rel="stylesheet" type="text/css">
+<link href="{% static '/bootsrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
 <!--font-->
 <link href="https://fonts.googleapis.com/css2?family=Galada&family=Grenze+Gotisch:wght@200;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@200;500&display=swap" rel="stylesheet">
@@ -44,7 +44,8 @@
     .errorlist{
       color:red;
     }
-      .bd-placeholder-img {
+      .bd-placeholder-img
+       {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
@@ -52,16 +53,28 @@
         -ms-user-select: none;
         user-select: none;
       }
+
+      #right-panel {
+        position: fixed;
+    
+    right: 0;
+    width: 0%;
+    /* transform: translateX(350px); */
+    height: 100%;
+    background-color: #f5f5f5;
+    border-left: 1px solid #353535;
+    transition: 0.5s;
+    }
     
 
     {% block CSS %}
-
     {% endblock %}
     </style>
     <!-- Custom styles for this template -->
-    <link href="{% static "css/dashboard.css" %}" rel="stylesheet" type="text/css">
-    <link href="{% static "css/timeline.css" %}" rel="stylesheet" type="text/css">
-    <link href="{% static "css/tagsinput.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/timeline.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/tagsinput.css'
+     %}" rel="stylesheet" type="text/css">
 
   </head>
   <body style="background: #fdfbfb;font-family:  'Montserrat', sans-serif;">
@@ -131,9 +144,16 @@
 
       {% block content %}
       {% endblock %}
-
+      
     </main>
+    <div id="right-panel">
+      <div style="font-size: 30px;">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+    <div id = right-panel-data>
 
+    </div>
+  </div>
 
 
   </div>
@@ -163,15 +183,15 @@
 </div>
 
 <!--end modal-->
-<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<!--reuire for tooltip--><script src="{% static "bootsrap/js/bootstrap.min.js" %}"></script>
-<script src="{% static "bootsrap/js/bootstrap.bundle.js" %}"></script>
-<script src="{% static "js/feather.min.js" %}"></script>
-<script src="{% static "js/Chart.min.js" %}"></script>
-<script src="{% static "js/dashboard.js" %}"></script>
-<script src="{% static "js/tagsinput.js" %}"></script>
-<script src="{% static "js/api.js" %}"></script> <!--API Call-->
+<!--reuire for tooltip--><script src="{% static 'bootsrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'bootsrap/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'js/feather.min.js' %}"></script>
+<script src="{% static 'js/Chart.min.js' %}"></script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/tagsinput.js' %}"></script>
+<script src="{% static 'js/api.js' %}"></script> <!--API Call-->
 {% block jslink %}
 {% endblock %}
 
@@ -205,7 +225,7 @@ pages = ['/Dashboard/', '/task/', '/activity/','/comments/'];
 let nav = $('.nav-link');
 
 nav.each(function(i,item) {
-  debugger;
+
  if (pathname.includes(pages[i-1])) 
  {
    $(item).addClass('active');
@@ -216,6 +236,15 @@ nav.each(function(i,item) {
  }
 });
 // Active URL  - Implmentation - End
+/* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+  document.getElementById("right-panel").style.width = "30%";
+}
+
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("right-panel").style.width = "0";
+}
 </script>
 
 

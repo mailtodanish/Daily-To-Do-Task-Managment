@@ -16,7 +16,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         model = Activity
         fields = ('Title', 'Description', 'status', 'scheduled', 'pk',
                   'parentActivityId')
-        extra_kwargs = {'status': {'write_only': True}}
+        
 
         def create(self, validated_data):
             '''

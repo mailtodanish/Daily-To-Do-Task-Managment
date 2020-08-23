@@ -8,6 +8,31 @@ from projects.models import Activity,TaskComment
 from .serializers import ActivitySerializer
 from rest_framework.authtoken.models import Token
 
+class ChildActivityList(APITestCase):
+    '''
+    child activities of a parent activity
+    '''
+    def setUp(self):
+        self.superuser = User.objects.create_superuser('john', 'john@snow.com', 'johnpassword')
+        self.token = Token.objects.create(user=self.superuser)
+        self.api_authentication()
+        self.ParentActivity = Activity.objects.create(Title="Activity_Title",Description="Description")
+        self.ChildActivity = Activity.objects.create(Title="Activity_child_Title",Description="Description",parentActivityId=self.ParentActivity.id)
+        self.ChildActivityOne = Activity.objects.create(Title="Activity_child_Title1",Description="Description",parentActivityId=self.ParentActivity.id)
+
+    def api_authentication(self):
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+    
+    def test_can_get_child_activities(self):
+        response = self.client.get(reverse('api-child-activity', args=[self.ParentActivity.id]))       
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    
+    def test_count_child_activities(self):
+        # Count Number of Child Activities
+        response = self.client.get(reverse('api-child-activity', args=[self.ParentActivity.id]))
+        self.assertEqual(len(response.data), 2)
+    
+
 class CreateActivityTest(APITestCase):
     '''
     ActivityRouter - Test Cases Create
@@ -18,6 +43,7 @@ class CreateActivityTest(APITestCase):
         self.data = {'Title': 'Activity_Title', 'Description': 'Activity_Description'}
         self.token = Token.objects.create(user=self.superuser)
         self.api_authentication()
+        
     
     def api_authentication(self):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)

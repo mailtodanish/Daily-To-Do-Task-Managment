@@ -1,7 +1,7 @@
 
 from .views import ScheduledActivityList
 from .views import RevisionItem, RevisionItemUpdate, CommentsofTheDay
-from .views import RevisionItemofTheDay
+from .views import RevisionItemofTheDay, ChildActivityList
 from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 from .apiview import ActivityViewSet
@@ -24,6 +24,9 @@ urlpatterns = [
     # daily_task Test Case -done
     path("api/dailytask/", RevisionItemofTheDay.as_view(),
          name="daily_task"),
+     #child activities
+    path("api/childactivity/<int:pk>/", ChildActivityList.as_view(),
+         name="api-child-activity"),
 ]
 
 # router has been used in activity creation API.

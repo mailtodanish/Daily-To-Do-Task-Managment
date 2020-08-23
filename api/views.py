@@ -40,6 +40,18 @@ class ScheduledActivityList(APIView):
         data = ActivitySerializer(records, many=True).data
         return Response(data)
 
+class ChildActivityList(APIView):
+    '''
+    Get list of child activity of scheduled activity
+    Test Case - 
+    '''
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, pk):
+        records = Activity.objects.filter(parentActivityId=pk).order_by("-pk")
+        data = ActivitySerializer(records, many=True).data
+        return Response(data)
+
 
 class RevisionItem(APIView):
     '''

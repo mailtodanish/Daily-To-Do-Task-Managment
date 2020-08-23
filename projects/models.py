@@ -182,7 +182,7 @@ class Activity(models.Model):
             # if parent activity is schedule for weekly
             if scheduledActivity.Type == 'Weekly':
                 # update Scheduled Date
-                scheduledActivity.scheduled = self.day_hence(1)
+                scheduledActivity.scheduled = self.day_hence(3)
             elif scheduledActivity.Type == 'Monthly':
                 # update Scheduled Date
                 scheduledActivity.scheduled = self.day_hence(30)
