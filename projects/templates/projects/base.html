@@ -16,6 +16,7 @@
 
     <!-- Bootstrap core CSS -->
 <link href="{% static '/bootsrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static '/watch/css/main.css' %}" rel="stylesheet" type="text/css">
 <!--font-->
 <link href="https://fonts.googleapis.com/css2?family=Galada&family=Grenze+Gotisch:wght@200;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@200;500&display=swap" rel="stylesheet">
@@ -73,11 +74,11 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/timeline.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/tagsinput.css'
-     %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/tagsinput.css' %}" rel="stylesheet" type="text/css">
+    
 
   </head>
-  <body style="background: #fdfbfb;font-family:  'Montserrat', sans-serif;">
+  <body  style="background: #fdfbfb;font-family:  'Montserrat', sans-serif;">
     <nav class="navbar navbar-dark sticky-top  flex-md-nowrap p-0 shadow" style="background: linear-gradient(45deg, #ffc001, #020202);">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/" style="font-family: 'Galada', cursive;">
     <h4>Work Managment</h4>
@@ -98,7 +99,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -134,10 +135,16 @@
           </li>
 
         </ul>
-
+        <div id=watch>
+          <!-- <div id=time></div> -->
+         <div id="second"></div>
+         <div id="minute"></div>
+         <div id="hour"></div>         
+        </div>
 
 
       </div>
+      
     </nav>
 
     <main role="main" id ="printable" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
@@ -192,6 +199,8 @@
 <script src="{% static 'js/dashboard.js' %}"></script>
 <script src="{% static 'js/tagsinput.js' %}"></script>
 <script src="{% static 'js/api.js' %}"></script> <!--API Call-->
+<script src="{% static 'watch/js/index.js' %}"></script>
+
 {% block jslink %}
 {% endblock %}
 
