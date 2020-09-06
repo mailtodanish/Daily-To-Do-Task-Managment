@@ -32,7 +32,7 @@ class LovCreateForm(forms.ModelForm):
     class Meta:
         model = ApplictaionData
         fields = ['Name', 'Value', 'Description', 'IsCategory', 'Type']
-    
+
     # Validation for name Field
     def clean_Description(self):
         cleaned_data = self.cleaned_data
@@ -138,7 +138,8 @@ class ActivityCreateForm(forms.ModelForm):
                             label='detail',
                             required=True,
                             label_suffix="",
-                            widget=TinyMCE(attrs={'class': 'form-control'})
+                            # widget=TinyMCE(attrs={'class': 'form-control'})
+                            widget=forms.Textarea()
                             )
     Title = forms.CharField(
                             label='Title',

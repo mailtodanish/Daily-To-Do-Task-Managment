@@ -33,11 +33,16 @@ class ScheduledActivityList(APIView):
     Get list of scheduled activity to create daily activities.
     Test Case - Done
     '''
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        records = Activity.objects.exclude(Type="General")
-        data = ActivitySerializer(records, many=True).data
+        records = Activity.objects.exclude(Type="General").filter(status='Open')
+        rec=[]
+        for r in records:
+            find_record =  Activity.objects.filter(parentActivityId=r.pk,status='Open',Type="General")
+            if find_record.count() == 0:
+                       rec.append(r)
+        data = ActivitySerializer(rec, many=True).data
         return Response(data)
 
 class ChildActivityList(APIView):

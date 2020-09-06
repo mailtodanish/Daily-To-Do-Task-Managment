@@ -2,6 +2,7 @@ from rest_framework import serializers
 from projects.models import Activity, TaskComment, ProjectTask
 from taggit_serializer.serializers import (TagListSerializerField,
                                            TaggitSerializer)
+from django.utils import timezone
 
 # Activity Serializer
 '''
@@ -16,6 +17,7 @@ class ActivitySerializer(serializers.ModelSerializer):
         model = Activity
         fields = ('Title', 'Description', 'status', 'scheduled', 'pk',
                   'parentActivityId')
+        read_only_fields = ['scheduled']
         
 
         def create(self, validated_data):
@@ -26,7 +28,7 @@ class ActivitySerializer(serializers.ModelSerializer):
                             Title=validated_data['Title'],
                             Description=validated_data['Description'],
                             Type=validated_data['Type'],
-                            parentActivityId=validated_data['parentActivityId']                
+                            parentActivityId=validated_data['parentActivityId']
             )
             act.save()
             return act

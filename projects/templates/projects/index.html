@@ -154,6 +154,10 @@
 {% endblock %}
 
 {% block js %}
+
+  var easyMDE = new EasyMDE({element: document.getElementById('id_Description')});
+
+
    var revision_config = {
     type: 'line',
     data: {

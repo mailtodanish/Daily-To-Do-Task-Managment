@@ -22,6 +22,8 @@
 
 {% endblock %}
 {% block js %}
+var easyMDE = new EasyMDE({element: document.getElementById('id_Description')});
+easyMDE.togglePreview()
 $('#update_activity').click(function(e) {
     /** Status of Activity if done then show confirmation message */
     let status = $('#id_status').val();
