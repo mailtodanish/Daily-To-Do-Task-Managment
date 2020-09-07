@@ -5,7 +5,7 @@ from .views import AddTaskComment, DeleteTaskCommnet, AddLink, TaskCommentList
 from .views import TaskCommentUpdate
 from .views import ActivityDetail, DeleteActivity, ActivityList, AddActivity
 from .views import ActivityUpdate, CommentsDetail
-from .views import CreateActivityFromHomePage
+from .views import CreateActivityFromHomePage, UserEditView
 from . import views
 from django.contrib.auth.views import LogoutView
 from django.urls import path, include
@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
     path('', views.login, name="login"),
+    path('profile/', UserEditView.as_view(), name="edit_profile"),
     path("logout/", LogoutView.as_view(
         template_name='projects/registration/login.html'), name="logout"),
     path('Dashboard/', Home.as_view(), name="HomePage"),

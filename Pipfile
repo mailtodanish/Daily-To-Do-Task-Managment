@@ -19,6 +19,7 @@ xhtml2pdf = "*"
 djangorestframework = "*"
 pycodestyle = "*"
 django-crispy-forms = "*"
+django-datetime-widget = "*"
 
 [requires]
 python_version = "3.8"

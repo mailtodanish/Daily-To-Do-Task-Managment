@@ -24,8 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
-    'projects',   
+    'django.contrib.staticfiles',
+    'projects',
     'tinymce',
     'taggit',
     'rest_framework',
@@ -34,8 +34,6 @@ INSTALLED_APPS = [
     'taggit_serializer',
     'django.contrib.humanize',
     'crispy_forms',
-
-    
 ]
 
 
@@ -48,6 +46,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'workmanagment.urls'

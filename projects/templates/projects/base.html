@@ -66,7 +66,28 @@
     border-left: 1px solid #353535;
     transition: 0.5s;
     }
-    
+    .dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-content a:hover {
+  background: linear-gradient(45deg, #ffc001, #020202);
+} 
 
     {% block CSS %}
     {% endblock %}
@@ -79,7 +100,7 @@
     
 
   </head>
-  <body  style="background: #fdfbfb;font-family:  'Montserrat', sans-serif;">
+  <body  style="overflow: auto;background: #fdfbfb;font-family:  'Montserrat', sans-serif;">
     <nav class="navbar navbar-dark sticky-top  flex-md-nowrap p-0 shadow" style="background: linear-gradient(45deg, #ffc001, #020202);">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/" style="font-family: 'Galada', cursive;">
     <h4>Work Managment</h4>
@@ -93,7 +114,17 @@
 
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link text-white" href="{% url 'logout' %}">Sign out</a>
+      <!-- <a class="nav-link text-white" href="{% url 'logout' %}">Sign out</a> -->
+      <div class="dropdown">
+        <a class="dropbtn">
+          <i class="fa fa-user-circle-o fa-2x" style="color:#ffeac5"></i>
+        </a>
+      <div class="dropdown-content dropdown-menu-right">
+        <!-- <a href="#">Link 1</a> -->
+        <a href="{% url 'edit_profile' %}">Profile</a>
+        <a href="{% url 'logout' %}">Sign out</a>
+      </div>
+      </div>
     </li>
   </ul>
 </nav>

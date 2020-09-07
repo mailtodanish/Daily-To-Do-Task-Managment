@@ -32,6 +32,18 @@ from django.utils.timezone import localdate
 # Sign up
 from django.contrib.auth import login, authenticate
 from .sign_up_form import SignUpForm
+from django.contrib.auth.forms import UserChangeForm
+from django.views import generic
+from .sign_up_form import EditProfileForm
+
+
+class UserEditView(LoginRequiredMixin, generic.UpdateView):
+    form_class = EditProfileForm
+    template_name = "projects/edit_profile.html"
+    success_url = reverse_lazy("HomePage")
+
+    def get_object(self):
+        return self.request.user
 
 
 def signup(request):
