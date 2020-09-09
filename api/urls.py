@@ -24,7 +24,7 @@ urlpatterns = [
     # daily_task Test Case -done
     path("api/dailytask/", RevisionItemofTheDay.as_view(),
          name="daily_task"),
-     #child activities
+    # child activities
     path("api/childactivity/<int:pk>/", ChildActivityList.as_view(),
          name="api-child-activity"),
 ]

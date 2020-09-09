@@ -36,19 +36,22 @@ class ScheduledActivityList(APIView):
     # permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
-        records = Activity.objects.exclude(Type="General").filter(status='Open')
-        rec=[]
+        records = Activity.objects.exclude(
+            Type="General").filter(status='Open')
+        rec = []
         for r in records:
-            find_record =  Activity.objects.filter(parentActivityId=r.pk,status='Open',Type="General")
+            find_record = Activity.objects.filter(
+                parentActivityId=r.pk, status='Open', Type="General")
             if find_record.count() == 0:
-                       rec.append(r)
+                rec.append(r)
         data = ActivitySerializer(rec, many=True).data
         return Response(data)
+
 
 class ChildActivityList(APIView):
     '''
     Get list of child activity of scheduled activity
-    Test Case - 
+    Test Case -
     '''
     permission_classes = [permissions.IsAuthenticated]
 
@@ -100,8 +103,9 @@ class RevisionItemofTheDay(APIView):
                     status='Done').order_by('-scheduled')
             html_message = loader.render_to_string(
                 'api/mail_template.html', {'Activities': queryset})
+            # send email to requested user
             email = EmailMessage('Task of the day',
-                                 html_message, to=['mailtodanish@gmail.com'])
+                                 html_message, to=[request.user.email, ])
             email.content_subtype = "html"
             email.send()
             return Response("Success")
