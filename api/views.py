@@ -137,7 +137,7 @@ class CommentsofTheDay(APIView):
                 'api/revision_items.html', {'items': object_list,
                                             'domain': domain})
             email = EmailMessage('Revision Items of the day ',
-                                 html_message, to=['mailtodanish@gmail.com'])
+                                 html_message, to=[request.user.email, ])
             email.content_subtype = "html"
             email.send()
             return Response("Success")
